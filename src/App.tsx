@@ -31,7 +31,11 @@ export const App: React.FC = () => {
       items = getRedGoods();
     }
 
-    items?.then((data: Good[]) => setGoods(data));
+    items
+      ?.then((data: Good[]) => setGoods(data))
+      .catch(error => {
+        console.error('Error loading goods:', error);
+      });
   }, [changeList]);
 
   return (
